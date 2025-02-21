@@ -1,11 +1,9 @@
 package com.capgemini.spring_intro.controller;
 
+import com.capgemini.spring_intro.dto.DtoUser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MyController {
@@ -24,4 +22,10 @@ public class MyController {
     public ResponseEntity<String> hello3(@PathVariable("name") String name){
         return new ResponseEntity<>("Hello  " + name + " from BridgeLabz", HttpStatus.OK );
     }
+
+    @PostMapping("/dto")
+    public ResponseEntity<DtoUser> dtoPost(@RequestBody DtoUser dtoUser){
+        return new ResponseEntity<>(new DtoUser(dtoUser.firstName(), dtoUser.lastName()), HttpStatus.CREATED);
+    }
+
 }
