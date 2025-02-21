@@ -28,4 +28,11 @@ public class MyController {
         return new ResponseEntity<>(new DtoUser(dtoUser.firstName(), dtoUser.lastName()), HttpStatus.CREATED);
     }
 
+    @PutMapping("/put/{firstName}")
+    public String sayHello(
+            @PathVariable String firstName,
+            @RequestParam String lastName) {
+        return "Hello " + firstName + " " + lastName + " from BridgeLabz!";
+    }
+
 }
